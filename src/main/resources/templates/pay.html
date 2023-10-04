@@ -34,7 +34,7 @@
                     var approvalForm = document.approvalForm;
                     approvalForm.Tid.value = res.Tid;
                     approvalForm.TrAuthKey.value = res.TrAuthKey;
-                    approvalForm.action = 'www.naver.com';
+                    approvalForm.action = 'localhost:8080/return';
                     approvalForm.submit();
                 }
             });
@@ -72,7 +72,7 @@
         </div>
         <div class="mb-3">
             <label for="ReturnUrl" class="form-label">Return URL</label>
-            <input type="text" class="form-control" id="ReturnUrl" name="ReturnUrl" size="100" value="가맹점 ReturnUrl 설정">
+            <input type="text" class="form-control" id="ReturnUrl" name="ReturnUrl" size="100" th:value="${ReturnUrl}">
         </div>
         <div class="mb-3">
             <label for="StopUrl" class="form-label">Stop URL</label>

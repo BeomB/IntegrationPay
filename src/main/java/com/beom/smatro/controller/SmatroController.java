@@ -40,14 +40,17 @@ public class SmatroController {
 
     @GetMapping("/return")
     public String returnUrl(@RequestParam("Tid")String Tid, @RequestParam("TrAuthKey") String TrAuthKey) {
-        log.info(Tid+TrAuthKey);
-        return "ready";
-    }
-    @PostMapping("/return")
-    public String returnUrl2(@RequestParam("Tid")String Tid, @RequestParam("TrAuthKey") String TrAuthKey) {
-        log.info(Tid+TrAuthKey);
-        return "ready";
+        log.info(Tid+TrAuthKey+"GET");
+        return "return";
     }
 
-    
+
+    @PostMapping("/return")
+    public String returnUrl2(@RequestParam("Tid")String Tid, @RequestParam("TrAuthKey") String TrAuthKey) {
+        log.info(Tid+TrAuthKey+"POST");
+        return "return";
+    }
+
+
+
 }
