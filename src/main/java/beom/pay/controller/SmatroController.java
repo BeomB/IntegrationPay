@@ -52,6 +52,19 @@ public class SmatroController {
         return "return";
     }
 
+    @GetMapping("/test")
+    public String test1() {
+        log.info("TEST GET");
+        return "test";
+    }
+
+
+    @PostMapping("/test")
+    public String test2() {
+        log.info("TEST POST");
+        return "test";
+    }
+
 
 
 }
