@@ -1,4 +1,4 @@
-package beom.pay.servlet;
+package beom.pay.smartro.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

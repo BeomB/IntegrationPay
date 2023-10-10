@@ -1,7 +1,8 @@
-package beom.pay.controller;
+package beom.pay.smartro.controller;
 
 
 
+import beom.pay.enums.ServiceGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static beom.pay.util.SmartroUtil.*;
+import static beom.pay.smartro.util.SmartroUtil.*;
 
 @Controller
 @Slf4j
@@ -49,6 +50,7 @@ public class SmatroController {
     @PostMapping("/return")
     public String returnUrl2(@RequestParam("Tid")String Tid, @RequestParam("TrAuthKey") String TrAuthKey) {
         log.info(Tid+TrAuthKey+"POST");
+
         return "return";
     }
 
