@@ -1,6 +1,5 @@
-package beom.pay.smartro.servlet;
+package beom.pay.company.smartro.servlet;
 
-import javax.servlet.annotation.WebServlet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
@@ -18,15 +17,14 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.util.HashMap;
 
+
+@WebServlet(name ="Approval",urlPatterns ="/approval")
 @Slf4j
-@WebServlet(name ="ApprovalInquiry",urlPatterns ="/approval-inquiry")
-public class ApporvalInquiryServlet extends HttpServlet {
+public class ApporvalServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String url = "https://tapproval.smartropay.co.kr/payment/approval/approvalInquiry.do";		// 테스트
-//String url = "https://approval.smartropay.co.kr/payment/approval/approvalInquiry.do";   	// 운영
+        String url = "https://tapproval.smartropay.co.kr/payment/approval/urlCallApproval.do";		// 테스트
 
         String Tid       = request.getParameter("Tid")==null?"":request.getParameter("Tid");
         String TrAuthKey = request.getParameter("TrAuthKey")==null?"":request.getParameter("TrAuthKey");
@@ -43,8 +41,9 @@ public class ApporvalInquiryServlet extends HttpServlet {
         printWriter.write(result.toString());
         printWriter.write("</body>");
         printWriter.write("</html>");
-
     }
+
+
     public HashMap<String, Object> callApi(String TrAuthKey, String Tid, String callUrl) {
 
         StringBuilder responseBody = null;
@@ -107,4 +106,5 @@ public class ApporvalInquiryServlet extends HttpServlet {
         }
         return result;
     }
+
 }

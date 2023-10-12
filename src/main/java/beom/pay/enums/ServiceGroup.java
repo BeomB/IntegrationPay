@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum ServiceGroup {
 
     EXIMBAY_PAY("EXIMBAY","https://api-test.eximbay.com"),
-    SMARTRO_PAY("SMARTRO","tpay.smartropay.co.kr");
+    SMARTRO_PAY("SMARTRO","tpay.smartropay.co.kr"),
+    KCP_PAY("KCP","TEST_KCP_PAY");
 
     private final String company;
     private final String testDomain;

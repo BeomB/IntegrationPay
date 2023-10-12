@@ -1,4 +1,4 @@
-package beom.pay.smartro.service;
+package beom.pay.company.smartro.service;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Service;

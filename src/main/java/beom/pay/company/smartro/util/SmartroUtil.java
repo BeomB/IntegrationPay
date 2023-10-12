@@ -1,4 +1,4 @@
-package beom.pay.smartro.util;
+package beom.pay.company.smartro.util;
 
 import org.apache.commons.codec.binary.Base64;
 

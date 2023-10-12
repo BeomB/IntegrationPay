@@ -1,8 +1,7 @@
-package beom.pay.smartro.controller;
+package beom.pay.company.smartro.controller;
 
 
 
-import beom.pay.enums.ServiceGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static beom.pay.smartro.util.SmartroUtil.*;
+import static beom.pay.company.smartro.util.SmartroUtil.*;
 
 @Controller
 @Slf4j
