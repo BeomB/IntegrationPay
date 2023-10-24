@@ -1,4 +1,4 @@
-package com.beom.smatro.util;
+package com.beom.common.util;
 
 import org.apache.commons.codec.binary.Base64;
 
