@@ -1,5 +1,6 @@
 package com.beom.common.util;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.codec.binary.Base64;
 
 import java.security.MessageDigest;
@@ -37,5 +38,9 @@ public class SmartroUtil {
         SimpleDateFormat yyyyMMddHHmm = new SimpleDateFormat("yyyyMMddHHmm");
         return yyyyMMddHHmm.format(new Date());
     }
+
+
+
+
 
 }

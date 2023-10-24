@@ -1,5 +1,6 @@
 package com.beom.pay.service;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,7 @@ public class EximbayService implements PayService {
     public String query() {
         return "EximbayService.query";
     }
+
+
 
 }

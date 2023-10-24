@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 public class TestController {
 
     private final PayService payService;
 
-    public TestController(@Qualifier("eximbayService") PayService payService) {
-        this.payService = payService;
-    }
+//    public TestController(@Qualifier("eximbayService") PayService payService) {
+//        this.payService = payService;
+//    }
 
     @GetMapping("/test/pay")
     public void testPay()

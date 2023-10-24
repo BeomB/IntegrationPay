@@ -1,5 +1,6 @@
 package com.beom.pay.service;
 
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -27,4 +28,6 @@ public class SmatroService implements PayService{
     public String query() {
         return "SmatroService.query";
     }
+
+
 }
