@@ -38,9 +38,4 @@ public class SmartroUtil {
         SimpleDateFormat yyyyMMddHHmm = new SimpleDateFormat("yyyyMMddHHmm");
         return yyyyMMddHHmm.format(new Date());
     }
-
-
-
-
-
 }
