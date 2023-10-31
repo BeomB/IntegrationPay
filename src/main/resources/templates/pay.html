@@ -26,15 +26,19 @@
                 mode: "STG"		// STG: 테스트, REAL: 운영(운영서버 전환 시 변경 필수!)
             });
 
+            console.log("first");
             // 스마트로페이 결제요청
             // PC 연동시 아래와 같이 smartropay.payment 함수를 구현합니다.
-            smartropay.payment({
+
+            smartropay.payment(
+                {
                 FormId : 'tranMgr',				// 폼ID
                 Callback : function(res) {
+                    console.log(res)
                     var approvalForm = document.approvalForm;
                     approvalForm.Tid.value = res.Tid;
                     approvalForm.TrAuthKey.value = res.TrAuthKey;
-                    approvalForm.action = 'localhost:8080/return';
+                    approvalForm.action = 'http://43.201.91.47/return';
                     approvalForm.submit();
                 }
             });

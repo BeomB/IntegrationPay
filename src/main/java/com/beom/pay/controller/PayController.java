@@ -2,7 +2,9 @@ package com.beom.pay.controller;
 
 
 
+import com.beom.common.log.MyLogger;
 import com.beom.pay.service.PayService;
+import com.beom.pay.service.SmartroService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,14 +20,21 @@ import static com.beom.common.util.SmartroUtil.*;
 @Controller
 public class PayController {
 
+    private final PayService payService;
+    private final SmartroService smartroService;
+    private final MyLogger myLogger;
+
     @GetMapping("/ready")
     public String ready(Model Model) {
+        myLogger.log("ready");
+        myLogger.log("ready");
         return "ready";
     }
 
     @PostMapping("/pay")
     public String smatroPay(Model Model, @RequestParam("Mid") String Mid, @RequestParam("MerchantKey") String MerchantKey, @RequestParam("Amt") String Amt) {
-        smartroPay(Model, Mid, MerchantKey, Amt);
+        myLogger.log("pay");
+        smartroService.smartroPay(Model, Mid, MerchantKey, Amt);
         return "pay";
     }
 
@@ -40,17 +49,7 @@ public class PayController {
         return "return";
     }
 
-    private void smartroPay(Model Model, String Mid, String MerchantKey, String Amt) {
-        String EdiDate = getyyyyMMddHHmmss();
-        String today = getyyyyMMddHHmm();        // 현재일자. 캐시방지용으로 사용
-        String EncryptData = encodeSHA256Base64(EdiDate + Mid + Amt + MerchantKey);
-        Model.addAttribute("Mid", Mid);
-        Model.addAttribute("EncryptData", EncryptData);
-        Model.addAttribute("MerchantKey", MerchantKey);
-        Model.addAttribute("EdiDate", EdiDate);
-        Model.addAttribute("Amt", Amt);
-        log.info("MID : {} EncryptData:{} MerchantKey :{} EdiDate : {} ", Mid, EncryptData, MerchantKey, EdiDate);
-    }
+
 
 
 }

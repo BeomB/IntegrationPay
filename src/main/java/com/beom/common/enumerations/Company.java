@@ -3,6 +3,7 @@ package com.beom.common.enumerations;
 public enum Company {
     SMARTRO("Smartro","스마트로"),
     EXIMBAY("Eximbay","엑심베이"),
+    TOSS("Toss","토스"),
     KCP("NHN Kcp","케이시피");
 
     private String koreanName;
