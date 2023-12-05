@@ -35,4 +35,12 @@ public class TestController {
     {
         System.out.println(payService.cancel());
     }
+
+
+    @GetMapping("/test/hello")
+    public void testCancel()
+    {
+
+        System.out.println(payService.cancel());
+    }
 }

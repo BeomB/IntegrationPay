@@ -4,7 +4,7 @@ package com.beom.pay.study;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class MyBean {
 
     @PostConstruct
