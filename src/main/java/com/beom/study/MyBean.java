@@ -1,4 +1,4 @@
-package com.beom.pay.study;
+package com.beom.study;
 
 
 import jakarta.annotation.PostConstruct;

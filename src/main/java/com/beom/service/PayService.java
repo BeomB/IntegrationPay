@@ -1,4 +1,4 @@
-package com.beom.pay.service;
+package com.beom.service;
 
 public interface PayService {
 

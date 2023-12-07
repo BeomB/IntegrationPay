@@ -17,34 +17,31 @@
          Mobile : tmpay.smartropay.co.kr -> mpay.smartropay.co.kr
     -->
     <!-- script 캐시방지를 위해 ?version=today를 추가  ex) SmartroPAY-1.0.min.js?version=20230101 -->
-    <script src="https://tpay.smartropay.co.kr/asset/js/SmartroPAY-1.0.min.js?version="+${today}></script>
+    <script th:inline="javascript" src="https://tpay.smartropay.co.kr/asset/js/SmartroPAY-1.0.min.js?version="+[[${today}]] ></script>
 
     <script type="text/javascript">
         function goPay() {
+
             // 스마트로페이 초기화
             smartropay.init({
                 mode: "STG"		// STG: 테스트, REAL: 운영(운영서버 전환 시 변경 필수!)
             });
 
-            console.log("first");
-            // 스마트로페이 결제요청
-            // PC 연동시 아래와 같이 smartropay.payment 함수를 구현합니다.
-
             smartropay.payment(
                 {
                 FormId : 'tranMgr',				// 폼ID
                 Callback : function(res) {
-                    console.log(res)
                     var approvalForm = document.approvalForm;
                     approvalForm.Tid.value = res.Tid;
                     approvalForm.TrAuthKey.value = res.TrAuthKey;
-                    approvalForm.action = 'http://43.201.91.47/return';
+                    approvalForm.action = document.getElementById('ReturnUrl').value;
                     approvalForm.submit();
                 }
             });
         };
     </script>
 </head>
+
 
 <body>
 <div class="container mt-5">
@@ -131,7 +128,13 @@
         </div>
 
     </form>
+
 </div>
+
+<form id="approvalForm" name="approvalForm" method="post">
+    <input type="hidden" id="Tid" name="Tid" />
+    <input type="hidden" id="TrAuthKey" name="TrAuthKey" />
+</form>
 
 <!-- Bootstrap JavaScript 및 jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

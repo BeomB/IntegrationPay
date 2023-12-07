@@ -1,9 +1,7 @@
-package com.beom.pay.service;
+package com.beom.service;
 
-import com.beom.pay.study.MyBean;
-import jakarta.annotation.PostConstruct;
+import com.beom.study.MyBean;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
