@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -46,6 +47,7 @@ public class PayController {
     }
 
     @PostMapping("/return")
+    @ResponseBody
     public String returnUrl2(@RequestParam("Tid") String Tid, @RequestParam("TrAuthKey") String TrAuthKey) {
         String url = "https://tapproval.smartropay.co.kr/payment/approval/urlCallApproval.do";        // 테스트
         HashMap<String, Object> result = callApi(TrAuthKey, Tid, url);
