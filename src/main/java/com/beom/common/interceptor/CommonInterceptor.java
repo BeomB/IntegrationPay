@@ -14,8 +14,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uuid = UUID.randomUUID().toString();
-        log.info("[{}] [{}]",uuid, request.getHeader("referer"));
         return true;
 //        return HandlerInterceptor.super.preHandle(request, response, handler);
     }
