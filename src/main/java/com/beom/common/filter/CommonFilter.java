@@ -1,7 +1,8 @@
 package com.beom.common.filter;
 
-
 import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
@@ -25,20 +26,37 @@ public class CommonFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
         try {
             // Trace ID 생성 (여기서는 UUID 사용)
-            String traceId = UUID.randomUUID().toString();
+            final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            final HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+            String requestTraceId = httpServletRequest.getHeader("traceId");
+            String traceId ="";
+
+            log.info(" traceId : {}",requestTraceId);
+
+            if ("".equals(requestTraceId)||null==requestTraceId)
+            {
+                traceId = UUID.randomUUID().toString();
+            }else
+            {
+                traceId = requestTraceId;
+            }
+
+            // 응답 헤더에 traceId를 추가합니다.
+            httpServletResponse.setHeader("traceId", traceId);
 
             // MDC에 Trace ID 추가
             MDC.put("traceId", traceId);
 
             // 다음 필터 또는 요청 처리로 전달
-            chain.doFilter(request, response);
+            chain.doFilter(httpServletRequest, httpServletResponse);
         } finally {
             // 요청 처리 완료 후에는 MDC에서 Trace ID 제거
             MDC.clear();
         }
     }
-
 }
 

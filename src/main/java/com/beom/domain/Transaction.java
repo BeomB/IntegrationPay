@@ -3,20 +3,18 @@ package com.beom.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "TRANSACTION")
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long transactionID;
 
-    @Column
-    int amt;
+    @Column(name = "AMOUNT")
+    int amount;
 
-    @Column
-    int goodsAmt;
-
-    @Column
-    String goodsName;
+    @Column(name = "PRODUCT_NAME")
+    String productName;
 
 
 }
