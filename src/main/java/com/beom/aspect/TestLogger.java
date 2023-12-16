@@ -19,7 +19,7 @@ public class TestLogger {
     @Before("execution(* com.beom.controller.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        log.info("Request received at {} " , System.currentTimeMillis());
+        log.info("Referer : {} " , request.getHeader("Referer"));
         log.info("Referer : {} " , request.getHeader("Referer"));
     }
 

@@ -35,21 +35,23 @@ public class CommonFilter implements Filter {
             String requestTraceId = httpServletRequest.getHeader("traceId");
             String traceId ="";
 
-            log.info(" traceId : {}",requestTraceId);
 
-            if ("".equals(requestTraceId)||null==requestTraceId)
+            if ("".equals(requestTraceId)||null == requestTraceId)
             {
+                log.info(" null - traceId : {}",requestTraceId);
                 traceId = UUID.randomUUID().toString();
             }else
             {
+                log.info(" notnull - traceId : {}",requestTraceId);
                 traceId = requestTraceId;
             }
 
             // 응답 헤더에 traceId를 추가합니다.
-            httpServletResponse.setHeader("traceId", traceId);
 
             // MDC에 Trace ID 추가
             MDC.put("traceId", traceId);
+            log.info("put traceId");
+            httpServletResponse.setHeader("traceId", traceId);
 
             // 다음 필터 또는 요청 처리로 전달
             chain.doFilter(httpServletRequest, httpServletResponse);
