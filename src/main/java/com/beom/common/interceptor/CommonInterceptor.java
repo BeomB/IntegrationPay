@@ -15,7 +15,6 @@ public class CommonInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;
-//        return HandlerInterceptor.super.preHandle(request, response, handler);
     }
 
     @Override

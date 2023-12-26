@@ -5,10 +5,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -28,13 +34,16 @@ public class CommonFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         try {
-            // Trace ID 생성 (여기서는 UUID 사용)
             final HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             final HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("hello","hello");
 
             String requestTraceId = httpServletRequest.getHeader("traceId");
             String traceId ="";
 
+            log.info("[{}] -----------TRACE - ID : {} --------------", ((HttpServletRequest) request).getRequestURI(),requestTraceId);
 
             if ("".equals(requestTraceId)||null == requestTraceId)
             {

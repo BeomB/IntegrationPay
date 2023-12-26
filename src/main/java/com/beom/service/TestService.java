@@ -1,6 +1,8 @@
 package com.beom.service;
 
 
+import com.beom.common.enumerations.ErrorEnumerate;
+import com.beom.common.exception.ApiException;
 import com.beom.domain.Member;
 import com.beom.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,4 +51,16 @@ public class TestService {
         memberRepository.delete(deleteMember);
         return deleteMember;
     }
+
+    @Transactional
+    public ResponseEntity<Member> error() {
+        Member member = new Member();
+        member.setName("바보");
+        if (member.getName().equals("바보"))
+        {
+            throw new ApiException(ErrorEnumerate.ACCESS_DENIED_EXCEPTION);
+        }
+        return ResponseEntity.ok(member);
+    }
+
 }

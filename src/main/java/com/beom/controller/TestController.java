@@ -1,11 +1,14 @@
 package com.beom.controller;
 
+import com.beom.common.enumerations.ErrorEnumerate;
+import com.beom.common.exception.ApiException;
 import com.beom.domain.Member;
 import com.beom.service.TestService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,14 +59,16 @@ public class TestController {
 
 
     @GetMapping("/step1")
-    public String step1() {
-        log.info("STEP 1 -> mode : {}");
+    public String step1(HttpServletRequest request,HttpServletResponse response) {
+        log.info("STEP 1 -> traceId : {}", MDC.get("traceId"));
+        response.setHeader("beom","beom");
         return "/logtest/step1";
     }
 
 
     @PostMapping("/step2")
-    public String step2(HttpServletResponse response, Model model, @RequestParam("PayMethod") String paymethod, @RequestParam("GoodsCount") String goodsCount, @RequestParam("GoodsName") String goodsName, @RequestParam("Amount") String amount) {
+    public String step2(HttpServletRequest request,HttpServletResponse response, Model model, @RequestParam("PayMethod") String paymethod, @RequestParam("GoodsCount") String goodsCount, @RequestParam("GoodsName") String goodsName, @RequestParam("Amount") String amount) {
+
         String traceId = response.getHeader("traceId");
         model.addAttribute("traceId", traceId);
         model.addAttribute("PayMethod",paymethod);
@@ -85,4 +90,14 @@ public class TestController {
         log.info("STEP 3 -> mode : {}", model.toString());
         return "/logtest/step3";
     }
+
+
+    @PostMapping("/error")
+    @ResponseBody
+    public String error() {
+        testService.error();
+        return "/logtest/step3";
+    }
+
+
 }
