@@ -15,6 +15,7 @@ public class ServiceFactory {
     public PayService find(Company company)
     {
         return payServiceList.stream().filter(v->v.supports(company)).findFirst().orElseThrow();
+
     }
 
 }

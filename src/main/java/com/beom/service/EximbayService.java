@@ -32,9 +32,9 @@ public class EximbayService implements PayService {
     }
 
     @Override
-    public boolean supports(Company company)
+    public boolean supports(final Company company)
     {
-        return false;
+        return company == Company.EXIMBAY;
     }
 
 
