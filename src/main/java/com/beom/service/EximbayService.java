@@ -1,5 +1,6 @@
 package com.beom.service;
 
+import com.beom.common.enumerations.Company;
 import com.beom.study.MyBean;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class EximbayService implements PayService {
     }
 
     @Override
+    public String ready() {
+        return "EximbayService.ready";
+    }
+
+    @Override
     public String cancel() {
         return "EximbayService.cancel";
     }
@@ -23,6 +29,12 @@ public class EximbayService implements PayService {
     @Override
     public String query() {
         return "EximbayService.query";
+    }
+
+    @Override
+    public boolean supports(Company company)
+    {
+        return false;
     }
 
 
