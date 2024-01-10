@@ -8,6 +8,7 @@ import com.beom.service.PayService;
 import com.beom.service.ServiceFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,10 @@ public class PayController {
 
     @GetMapping("/ready/{company}")
     @ResponseBody
-    public String ready(@PathVariable String company) {
+    public ResponseEntity<String> ready(@PathVariable String company) {
         Company companyType = Company.valueOf(company);
         PayService payService = serviceFactory.find(companyType);
-        return payService.ready();
+        return ResponseEntity.ok(payService.ready());
     }
 
     @GetMapping("/error2")

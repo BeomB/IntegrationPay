@@ -10,18 +10,18 @@ import java.util.Map;
 @Component
 public class TransactionMemoryRepository {
 
-    private static List<Transaction> store = new ArrayList<>();
+    private final static List<Transaction> transactionsStore = new ArrayList<>();
 
 
     public Transaction save(Transaction transaction)
     {
-        store.add(transaction);
+        transactionsStore.add(transaction);
         return transaction;
     }
 
     public Transaction select(Long Id)
     {
-        Transaction transaction = store.get(Math.toIntExact(Id));
+        Transaction transaction = transactionsStore.get(Math.toIntExact(Id));
         return transaction;
     }
 

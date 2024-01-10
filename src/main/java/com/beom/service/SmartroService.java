@@ -1,7 +1,10 @@
 package com.beom.service;
 
 import com.beom.common.enumerations.Company;
+import com.beom.repository.MemberMemoryRepository;
+import com.beom.repository.TransactionMemoryRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Primary;
@@ -19,9 +22,9 @@ import java.util.HashMap;
 import static com.beom.common.util.SmartroUtil.*;
 
 @Service
-@Primary
 @Slf4j
 public class SmartroService implements PayService{
+
 
 
     @Override

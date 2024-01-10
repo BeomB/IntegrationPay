@@ -9,21 +9,23 @@ import java.util.List;
 
 
 @Component
-public class MemberMemoryRepository {
+public class MemberMemoryRepository{
 
 
-    private static List<Member> store = new ArrayList<>();
+
+
+    private final static List<Member> memberStore = new ArrayList<>();
 
 
     public Member save(Member member)
     {
-        store.add(member);
+        memberStore.add(member);
         return member;
     }
 
     public Member select(Integer Id)
     {
-        Member member = store.get(Id);
+        Member member = memberStore.get(Id);
         return member;
     }
 

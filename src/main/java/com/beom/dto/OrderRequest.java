@@ -9,6 +9,5 @@ import org.springframework.validation.annotation.Validated;
 @ToString
 @Getter
 public class OrderRequest {
-    String amount;
-    String productName;
+
 }

@@ -1,15 +1,27 @@
 package com.beom.service;
 
 import com.beom.common.enumerations.Company;
+import com.beom.repository.MemberMemoryRepository;
+import com.beom.repository.MemberRepository;
+import com.beom.repository.TransactionMemoryRepository;
 import com.beom.study.MyBean;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class EximbayService implements PayService {
 
-    private final MyBean myBean;
+    private final MemberMemoryRepository memberMemoryRepository;
+    private final TransactionMemoryRepository transactionMemoryRepository;
+
+
+//    private final MemberRepository memberRepository;
+
+//    public EximbayService(@Qualifier("MemberMemoryRepository") MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
 
     @Override
     public String pay() {

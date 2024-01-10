@@ -1,15 +1,12 @@
 package com.beom.common.exception;
 
 import com.beom.common.enumerations.ErrorEnumerate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-public class ApiException extends RuntimeException{
+@AllArgsConstructor
+@Getter
+public class ApiException extends RuntimeException {
     private ErrorEnumerate errorEnumerate;
-
-    public ApiException(ErrorEnumerate e)
-    {
-        super(e.getErrorMessage());
-        this.errorEnumerate = e;
-    }
-
 
 }
