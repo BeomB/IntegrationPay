@@ -28,9 +28,9 @@ public class PayController {
     @GetMapping("/ready/{company}")
     @ResponseBody
     public ResponseEntity<String> ready(@PathVariable String company) {
-        Company companyType = Company.valueOf(company);
-        PayService payService = serviceFactory.find(companyType);
-        return ResponseEntity.ok(payService.ready());
+            Company companyType = Company.valueOf(company);
+            PayService payService = serviceFactory.find(companyType);
+            return ResponseEntity.ok(payService.ready());
     }
 
     @GetMapping("/error2")
