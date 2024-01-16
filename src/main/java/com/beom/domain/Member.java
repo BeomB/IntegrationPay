@@ -19,7 +19,14 @@ public class Member {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
+    @Column(name = "ADDRESS")
+    private String address;
+
+    @Column(name = "EMAIL")
+    private String email;
 
 
 }

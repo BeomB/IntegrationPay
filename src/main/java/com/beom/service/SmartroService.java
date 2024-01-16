@@ -2,7 +2,9 @@ package com.beom.service;
 
 import com.beom.common.enumerations.Company;
 import com.beom.repository.MemberMemoryRepository;
+import com.beom.repository.MemberRepository;
 import com.beom.repository.TransactionMemoryRepository;
+import com.beom.repository.TransactionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,11 +23,18 @@ import java.util.HashMap;
 
 import static com.beom.common.util.SmartroUtil.*;
 
+/**
+ * Smartro 로직을 구현하는 Service
+**/
+
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class SmartroService implements PayService{
 
-
+    private final MemberRepository memberRepository;
+    private final TransactionRepository transactionRepository;
+    private final CommonService commonService;
 
     @Override
     public String pay() {

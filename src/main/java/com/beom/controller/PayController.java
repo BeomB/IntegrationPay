@@ -4,6 +4,7 @@ package com.beom.controller;
 import com.beom.common.enumerations.Company;
 import com.beom.common.enumerations.ErrorEnumerate;
 import com.beom.common.exception.ApiException;
+import com.beom.service.CommonService;
 import com.beom.service.PayService;
 import com.beom.service.ServiceFactory;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,15 @@ import static com.beom.common.util.SmartroUtil.callApi;
 public class PayController {
 
     private final ServiceFactory serviceFactory;
+    private final CommonService commonService;
+
+    @GetMapping("/ready")
+    public String ready(Model model, @RequestParam("company") String company) {
+        commonService.saveTransaction();
+        Company companyType = Company.valueOf(company);
+        PayService payService = serviceFactory.find(companyType);
+        return "ready";
+    }
 
 
     @GetMapping("/ready/{company}")
@@ -30,6 +40,7 @@ public class PayController {
     public ResponseEntity<String> ready(@PathVariable String company) {
             Company companyType = Company.valueOf(company);
             PayService payService = serviceFactory.find(companyType);
+
             return ResponseEntity.ok(payService.ready());
     }
 
@@ -38,5 +49,4 @@ public class PayController {
     public void error2() {
         throw new ApiException(ErrorEnumerate.EXISTS_LOGINID);
     }
-
 }
